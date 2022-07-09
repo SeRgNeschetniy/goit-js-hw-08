@@ -46,7 +46,6 @@ refs.input.addEventListener('input', throttle(onFormData, 500));
 refs.textarea.addEventListener('input', throttle(onFormData, 500));
 
 function onFormData(e) {
-  console.log(formData);
   formData[e.target.name] = e.target.value;
   save(LOCALSTORAGE_KEY, formData);
 }
