@@ -30,12 +30,10 @@ let formData = {};
 
 function loadForm() {
   formData = load(LOCALSTORAGE_KEY);
-
   if (formData === undefined) {
     formData = {};
     return;
   }
-
   refs.input.value = formData.email === undefined ? '' : formData.email;
   refs.textarea.value = formData.message === undefined ? '' : formData.message;
 }
@@ -52,9 +50,10 @@ function onFormData(e) {
 
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
-  e.currentTarget.reset();
 
   console.log(formData);
+  e.currentTarget.reset();
 
   localStorage.removeItem(LOCALSTORAGE_KEY);
+  loadForm();
 });
